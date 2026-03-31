@@ -1,0 +1,2024 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boot cofee</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #f8f1e7, #efe0ce);
+    }
+
+    .logo-glow {
+      animation: glowPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes glowPulse {
+      0% {
+        filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff);
+        transform: scale(1);
+      }
+
+      50% {
+        filter: drop-shadow(0 0 8px #fff) drop-shadow(0 0 16px #fff);
+        transform: scale(1.05);
+      }
+
+      100% {
+        filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff);
+        transform: scale(1);
+      }
+    }
+
+    .hero-carousel {
+      max-width: 1100px;
+      margin: 2rem auto;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 22px 48px rgba(64, 40, 20, 0.2);
+    }
+
+    .hero-slide img {
+      height: 520px;
+      object-fit: cover;
+      filter: brightness(0.6);
+    }
+
+    .hero-overlay {
+      background: linear-gradient(90deg, rgba(37, 24, 16, 0.82), rgba(37, 24, 16, 0.18));
+      inset: 0;
+    }
+
+    .hero-caption {
+      bottom: 18%;
+      left: 8%;
+      right: 8%;
+      text-align: left;
+    }
+
+    .hero-caption h2 {
+      font-size: clamp(2rem, 4vw, 4rem);
+      font-weight: 700;
+    }
+
+    .hero-caption p {
+      max-width: 520px;
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-slide img {
+        height: 340px;
+      }
+
+      .hero-caption {
+        bottom: 12%;
+      }
+    }
+
+    .nav1 {
+      background-color: #6f4e37 !important;
+      animation: navbarSlideDown 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+      transform-origin: top;
+      box-shadow: 0 14px 28px rgba(64, 40, 20, 0.14);
+    }
+
+    .nav1 .navbar-brand,
+    .nav1 .nav-link {
+      color: #fff7ef !important;
+    }
+
+    .nav1 .navbar-brand,
+    .nav1 .nav-item {
+      opacity: 0;
+      transform: translateY(-12px);
+      animation: navItemReveal 0.65s ease-out forwards;
+    }
+
+    .nav1 .navbar-brand {
+      animation-delay: 0.15s;
+    }
+
+    .nav1 .nav-item:nth-child(1) {
+      animation-delay: 0.24s;
+    }
+
+    .nav1 .nav-item:nth-child(2) {
+      animation-delay: 0.32s;
+    }
+
+    .nav1 .nav-item:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .nav1 .nav-item:nth-child(4) {
+      animation-delay: 0.48s;
+    }
+
+    .nav1 .nav-item:nth-child(5) {
+      animation-delay: 0.56s;
+    }
+
+    .nav1 .nav-link:hover,
+    .nav1 .navbar-brand:hover {
+      color: #ffd59e !important;
+    }
+
+    @keyframes navbarSlideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes navItemReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .nav1 .order-trigger,
+    .nav1 .order-trigger:hover {
+      color: #4f2a14 !important;
+      background: linear-gradient(135deg, #ffd691, #e3a86b) !important;
+    }
+
+    .order-trigger {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      border: none;
+      border-radius: 999px;
+      padding: 0.5rem 1rem !important;
+      box-shadow: 0 12px 24px rgba(111, 78, 55, 0.22);
+      overflow: hidden;
+      isolation: isolate;
+      animation: orderPulse 2.3s ease-in-out infinite;
+    }
+
+    .order-trigger::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.38) 50%, transparent 70%);
+      transform: translateX(-140%);
+      animation: orderShine 3.5s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    .order-trigger svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .order-count {
+      min-width: 1.55rem;
+      height: 1.55rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #6f4e37;
+      color: #fff7ef;
+      font-size: 0.76rem;
+      font-weight: 700;
+      box-shadow: 0 6px 14px rgba(64, 40, 20, 0.2);
+    }
+
+    .order-panel {
+      background: linear-gradient(180deg, #fff9f2, #f0decb);
+      border-left: 1px solid rgba(111, 78, 55, 0.14);
+    }
+
+    .order-panel .offcanvas-header {
+      padding: 1.25rem 1.25rem 0.85rem;
+      border-bottom: 1px solid rgba(111, 78, 55, 0.12);
+    }
+
+    .order-panel .offcanvas-title {
+      color: #3b2517;
+      font-weight: 700;
+    }
+
+    .order-panel .btn-close {
+      filter: sepia(0.6);
+    }
+
+    .order-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.05rem;
+      margin-bottom: 1rem;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(111, 78, 55, 0.92), rgba(68, 41, 25, 0.94));
+      color: #fff7ef;
+      box-shadow: 0 18px 34px rgba(64, 40, 20, 0.18);
+    }
+
+    .order-summary small {
+      display: block;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 0.2rem;
+    }
+
+    .order-summary h5 {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .order-total {
+      font-size: 1.15rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .order-products {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .order-product {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 0.85rem;
+      align-items: center;
+      padding: 0.95rem;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.58);
+      border: 1px solid rgba(111, 78, 55, 0.12);
+      box-shadow: 0 12px 22px rgba(64, 40, 20, 0.08);
+    }
+
+    .order-product-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #6f4e37, #8a5a36);
+      color: #fff7ef;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+    }
+
+    .order-product h6 {
+      margin: 0 0 0.22rem;
+      color: #3b2517;
+      font-weight: 700;
+    }
+
+    .order-product p {
+      margin: 0;
+      color: #6f5a49;
+      font-size: 0.92rem;
+    }
+
+    .order-add-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 0.45rem 0.95rem;
+      background: linear-gradient(135deg, #ffd691, #e3a86b);
+      color: #4f2a14;
+      font-size: 0.82rem;
+      font-weight: 700;
+      box-shadow: 0 10px 18px rgba(111, 78, 55, 0.16);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .order-add-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 22px rgba(111, 78, 55, 0.2);
+    }
+
+    .order-selected {
+      margin-top: 1rem;
+      padding: 0.95rem 1rem;
+      border-radius: 18px;
+      background: rgba(111, 78, 55, 0.08);
+      color: #5f4939;
+      font-size: 0.95rem;
+    }
+
+    .place-order-btn {
+      margin-top: 1rem;
+      border: none;
+      border-radius: 999px;
+      padding: 0.85rem 1rem;
+      background: linear-gradient(135deg, #6f4e37, #8a5a36);
+      color: #fff7ef;
+      font-weight: 700;
+      box-shadow: 0 16px 26px rgba(64, 40, 20, 0.18);
+    }
+
+    .place-order-btn:hover {
+      opacity: 0.96;
+    }
+
+    @keyframes orderPulse {
+      0% {
+        box-shadow: 0 12px 24px rgba(111, 78, 55, 0.22);
+      }
+
+      50% {
+        box-shadow: 0 16px 30px rgba(111, 78, 55, 0.28);
+      }
+
+      100% {
+        box-shadow: 0 12px 24px rgba(111, 78, 55, 0.22);
+      }
+    }
+
+    @keyframes orderShine {
+
+      0%,
+      100% {
+        transform: translateX(-140%);
+      }
+
+      45%,
+      65% {
+        transform: translateX(140%);
+      }
+    }
+
+    .products-section {
+      max-width: 1140px;
+      margin: 3rem auto 4rem;
+      padding-inline: 0.75rem;
+    }
+
+    .product-card {
+      cursor: pointer;
+      perspective: 1000px;
+      transform-style: preserve-3d;
+      transition: transform 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease;
+      background: linear-gradient(145deg, #fffaf5, #f3e2cf);
+      border: 1px solid rgba(111, 78, 55, 0.16);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 16px 34px rgba(64, 40, 20, 0.14);
+      min-height: 250px;
+      position: relative;
+    }
+
+    .product-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 25%, rgba(255, 255, 255, 0.45) 50%, transparent 75%);
+      transform: translateX(-130%);
+      transition: transform 0.7s ease;
+      pointer-events: none;
+    }
+
+    .product-card:hover,
+    .product-card.is-active {
+      transform: translateY(-12px) rotateX(7deg) rotateY(-7deg) scale(1.02);
+      box-shadow: 0 28px 52px rgba(64, 40, 20, 0.24);
+      border-color: rgba(111, 78, 55, 0.35);
+    }
+
+    .product-card:hover::before,
+    .product-card.is-active::before {
+      transform: translateX(130%);
+    }
+
+    .product-content {
+      z-index: 2;
+      transform: translateZ(28px);
+    }
+
+    .product-badge {
+      width: fit-content;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(111, 78, 55, 0.12);
+      letter-spacing: 0.04em;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+    }
+
+    .product-price {
+      font-weight: 700;
+      color: #6f4e37;
+    }
+
+    .product-link {
+      width: fit-content;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #5a3822, #8a5a36);
+      box-shadow: 0 10px 22px rgba(90, 56, 34, 0.2);
+      padding: 0.55rem 1.05rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+    }
+
+    .product-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 26px rgba(90, 56, 34, 0.28);
+      opacity: 0.97;
+    }
+
+    .product-visual {
+      position: relative;
+      width: 200px;
+      overflow: hidden;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.95), rgba(232, 210, 188, 0.5));
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-height: 250px;
+    }
+
+    .product-image {
+      transition: transform 0.55s ease, filter 0.55s ease;
+      filter: drop-shadow(0 16px 22px rgba(56, 35, 20, 0.2));
+      transform-origin: center bottom;
+    }
+
+    .product-steam {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      width: 90px;
+      height: 90px;
+      transform: translateX(-50%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .product-steam span {
+      position: absolute;
+      bottom: 0;
+      width: 14px;
+      height: 58px;
+      border-radius: 999px;
+      background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.78));
+      filter: blur(1px);
+      animation: steamRise 2.6s ease-in-out infinite;
+    }
+
+    .product-steam span:nth-child(1) {
+      left: 16px;
+      animation-delay: 0s;
+    }
+
+    .product-steam span:nth-child(2) {
+      left: 38px;
+      height: 68px;
+      animation-delay: 0.45s;
+    }
+
+    .product-steam span:nth-child(3) {
+      left: 58px;
+      animation-delay: 0.9s;
+    }
+
+    .product-card:hover .product-image,
+    .product-card.is-active .product-image {
+      transform: translateY(-14px) scale(1.08) rotate(-5deg);
+      filter: drop-shadow(0 26px 28px rgba(56, 35, 20, 0.26));
+    }
+
+    .product-card:hover .product-steam,
+    .product-card.is-active .product-steam {
+      opacity: 1;
+    }
+
+    .offer-section {
+      max-width: 1140px;
+      margin: 0 auto 4rem;
+      padding-inline: 0.75rem;
+    }
+
+    .offer-banner {
+      padding: 1.25rem 1.4rem;
+      border-radius: 28px;
+      margin-bottom: 1.3rem;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(111, 78, 55, 0.94), rgba(63, 39, 24, 0.95)),
+        linear-gradient(90deg, rgba(255, 214, 157, 0.2), transparent);
+      color: #fff7ef;
+      box-shadow: 0 22px 42px rgba(64, 40, 20, 0.2);
+    }
+
+    .offer-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.16) 48%, transparent 76%);
+      transform: translateX(-130%);
+      animation: offerShine 4.2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .offer-banner small {
+      display: inline-block;
+      margin-bottom: 0.45rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255, 247, 239, 0.14);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .offer-banner h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      font-weight: 700;
+    }
+
+    .offer-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.55rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .offer-glow {
+      display: inline-block;
+      padding: 0.35rem 0.78rem;
+      border-radius: 999px;
+      background: rgba(255, 215, 149, 0.98);
+      color: #5c2f13;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 0 18px rgba(255, 198, 105, 0.45);
+      animation: offerPulse 1.8s ease-in-out infinite;
+    }
+
+    .offer-card {
+      height: 100%;
+      padding: 1.4rem;
+      border-radius: 24px;
+      border: 1px solid rgba(111, 78, 55, 0.14);
+      background: linear-gradient(145deg, #fffaf4, #f1dfcb);
+      box-shadow: 0 16px 34px rgba(64, 40, 20, 0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .offer-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 22px 40px rgba(64, 40, 20, 0.18);
+    }
+
+    .offer-chip {
+      display: inline-block;
+      margin-bottom: 0.9rem;
+      padding: 0.35rem 0.78rem;
+      border-radius: 999px;
+      background: rgba(111, 78, 55, 0.12);
+      color: #6f4e37;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .offer-card h3 {
+      color: #3b2517;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.65rem;
+    }
+
+    .offer-card p {
+      margin-bottom: 0;
+      color: #6f5a49;
+    }
+
+    .reviews-section {
+      max-width: 1140px;
+      margin: 0 auto 4rem;
+      padding-inline: 0.75rem;
+    }
+
+    .review-column {
+      text-align: center;
+    }
+
+    .review-card {
+      height: 100%;
+      padding: 1.5rem 1.2rem;
+      border-radius: 24px;
+      background: linear-gradient(145deg, #fffaf4, #f1dfcb);
+      border: 1px solid rgba(111, 78, 55, 0.12);
+      box-shadow: 0 16px 34px rgba(64, 40, 20, 0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 22px 40px rgba(64, 40, 20, 0.18);
+    }
+
+    .review-avatar {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 1.2rem;
+      display: block;
+      filter: drop-shadow(0 12px 20px rgba(64, 40, 20, 0.12));
+    }
+
+    .review-card h2 {
+      color: #3b2517;
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .review-card p {
+      color: #6f5a49;
+    }
+
+    .review-btn {
+      border-radius: 999px;
+      background: linear-gradient(135deg, #6f4e37, #8a5a36);
+      border: none;
+      padding-inline: 1rem;
+    }
+
+    .footer-section {
+      max-width: 1140px;
+      margin: 0 auto 7rem;
+      padding-inline: 0.75rem;
+    }
+
+    .footer-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at top right, rgba(255, 197, 124, 0.18), transparent 34%),
+        linear-gradient(145deg, #5b3822, #2d1b12);
+      color: #fff4e8;
+      box-shadow: 0 24px 48px rgba(37, 23, 13, 0.22);
+    }
+
+    .footer-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 237, 214, 0.08), transparent 48%);
+      pointer-events: none;
+    }
+
+    .footer-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.1fr 0.8fr 1.2fr;
+      gap: 1.5rem;
+      padding: 2.1rem;
+    }
+
+    .footer-panel {
+      border-radius: 24px;
+      padding: 1.3rem;
+      background: rgba(255, 247, 239, 0.08);
+      border: 1px solid rgba(255, 238, 215, 0.12);
+      backdrop-filter: blur(6px);
+    }
+
+    .footer-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border-radius: 999px;
+      padding: 0.36rem 0.8rem;
+      margin-bottom: 1rem;
+      background: rgba(255, 225, 184, 0.12);
+      color: #ffd79c;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer-brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: #fff8f0;
+    }
+
+    .footer-copy {
+      color: rgba(255, 237, 214, 0.82);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-meta {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .footer-meta-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: rgba(255, 241, 223, 0.9);
+    }
+
+    .footer-meta-item svg {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      margin-top: 0.18rem;
+      color: #ffd79c;
+    }
+
+    .footer-social-title,
+    .footer-map-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff8f0;
+      margin-bottom: 0.85rem;
+    }
+
+    .footer-social-copy,
+    .footer-map-copy {
+      color: rgba(255, 237, 214, 0.8);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .footer-social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: rgba(255, 248, 240, 0.12);
+      color: #fff6ed;
+      border: 1px solid rgba(255, 233, 202, 0.16);
+      text-decoration: none;
+      box-shadow: inset 0 1px 0 rgba(255, 246, 230, 0.18);
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .footer-social-link:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 214, 156, 0.18);
+      box-shadow: 0 18px 28px rgba(21, 13, 9, 0.22);
+    }
+
+    .footer-social-link svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .footer-note {
+      color: rgba(255, 228, 193, 0.86);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    .footer-map-frame {
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 233, 202, 0.16);
+      box-shadow: 0 20px 34px rgba(15, 9, 6, 0.24);
+    }
+
+    .footer-map-frame iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 250px;
+      border: 0;
+      filter: sepia(0.25) saturate(0.92) hue-rotate(-10deg);
+    }
+
+    .footer-bottom {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding: 0 2.1rem 1.6rem;
+      color: rgba(255, 235, 210, 0.76);
+      font-size: 0.93rem;
+    }
+
+    .footer-bottom a {
+      color: #ffd79c;
+      text-decoration: none;
+    }
+
+    .offer-price {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(111, 78, 55, 0.1);
+      color: #6f4e37;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    @keyframes offerPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 198, 105, 0.42);
+      }
+
+      70% {
+        box-shadow: 0 0 0 12px rgba(255, 198, 105, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 198, 105, 0);
+      }
+    }
+
+    @keyframes offerShine {
+
+      0%,
+      100% {
+        transform: translateX(-130%);
+      }
+
+      45%,
+      60% {
+        transform: translateX(130%);
+      }
+    }
+
+    @keyframes steamRise {
+      0% {
+        transform: translateY(18px) scale(0.75);
+        opacity: 0;
+      }
+
+      35% {
+        opacity: 0.75;
+      }
+
+      100% {
+        transform: translateY(-18px) scale(1.1);
+        opacity: 0;
+      }
+    }
+
+    .music-toggle {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 1080;
+      width: min(248px, calc(100vw - 1.2rem));
+      border: 1px solid rgba(74, 45, 27, 0.36);
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(255, 244, 230, 0.45), transparent 18%),
+        linear-gradient(180deg, #d6b48f 0%, #b48760 52%, #855435 100%);
+      color: #2f1b10;
+      padding: 0.82rem;
+      display: grid;
+      gap: 0.55rem;
+      box-shadow: 0 20px 38px rgba(64, 40, 20, 0.28);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+      overflow: visible;
+    }
+
+    .music-toggle:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 26px 44px rgba(64, 40, 20, 0.34);
+    }
+
+    .music-toggle.is-playing {
+      box-shadow:
+        0 26px 46px rgba(64, 40, 20, 0.38),
+        0 0 0 1px rgba(255, 190, 204, 0.26),
+        0 0 28px rgba(255, 126, 158, 0.24);
+    }
+
+    .music-toggle:disabled {
+      opacity: 0.72;
+      cursor: not-allowed;
+      filter: grayscale(0.16);
+      transform: none;
+    }
+
+    .tape-love {
+      position: absolute;
+      inset: auto 1rem 100% 1rem;
+      height: 2.6rem;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .love-heart {
+      position: absolute;
+      bottom: 0;
+      width: 0.92rem;
+      height: 0.92rem;
+      background: linear-gradient(135deg, #ff8aa8, #ff5d87);
+      transform: rotate(-45deg);
+      opacity: 0;
+      box-shadow: 0 0 12px rgba(255, 122, 156, 0.3);
+    }
+
+    .love-heart::before,
+    .love-heart::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: inherit;
+    }
+
+    .love-heart::before {
+      top: -50%;
+      left: 0;
+    }
+
+    .love-heart::after {
+      top: 0;
+      left: 50%;
+    }
+
+    .love-heart.heart-1 {
+      left: 18%;
+    }
+
+    .love-heart.heart-2 {
+      left: 48%;
+      animation-delay: 0.35s;
+    }
+
+    .love-heart.heart-3 {
+      right: 14%;
+      animation-delay: 0.7s;
+    }
+
+    .music-toggle.is-playing .tape-love {
+      opacity: 1;
+    }
+
+    .music-toggle.is-playing .love-heart {
+      animation: tapeLove 2s ease-in-out infinite;
+    }
+
+    .tape-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .tape-brand {
+      color: rgba(53, 29, 16, 0.88);
+    }
+
+    .tape-status {
+      padding: 0.28rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(55, 30, 16, 0.12);
+      box-shadow: inset 0 1px 0 rgba(255, 248, 237, 0.55);
+      color: rgba(64, 34, 19, 0.88);
+    }
+
+    .music-toggle.is-playing .tape-status {
+      background: rgba(255, 205, 219, 0.95);
+      color: #6b243b;
+      box-shadow: 0 0 14px rgba(255, 142, 176, 0.4);
+    }
+
+    .cassette-window {
+      position: relative;
+      display: grid;
+      grid-template-columns: 48px 1fr 48px;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.72rem;
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 26%),
+        linear-gradient(180deg, #3d2517 0%, #1f120b 100%);
+      border: 1px solid rgba(255, 233, 204, 0.08);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 243, 224, 0.08),
+        0 12px 22px rgba(37, 23, 13, 0.26);
+    }
+
+    .cassette-window::before {
+      content: "";
+      position: absolute;
+      inset: 0.42rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 220, 178, 0.06);
+      pointer-events: none;
+    }
+
+    .music-toggle.is-playing .cassette-window {
+      box-shadow:
+        inset 0 1px 0 rgba(255, 243, 224, 0.1),
+        0 12px 22px rgba(37, 23, 13, 0.3),
+        0 0 18px rgba(255, 126, 158, 0.18);
+    }
+
+    .tape-reel {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 3px solid #d8bea1;
+      background:
+        radial-gradient(circle at center, #b18c6a 0 18%, #2f1b10 19% 38%, #d8bea1 39% 45%, #442a1a 46% 100%);
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 0 0 1px rgba(255, 243, 226, 0.18);
+    }
+
+    .tape-reel::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border-radius: 50%;
+      background:
+        conic-gradient(from 0deg,
+          rgba(255, 244, 230, 0.92) 0deg 18deg,
+          transparent 18deg 72deg,
+          rgba(255, 244, 230, 0.92) 72deg 90deg,
+          transparent 90deg 144deg,
+          rgba(255, 244, 230, 0.92) 144deg 162deg,
+          transparent 162deg 216deg,
+          rgba(255, 244, 230, 0.92) 216deg 234deg,
+          transparent 234deg 288deg,
+          rgba(255, 244, 230, 0.92) 288deg 306deg,
+          transparent 306deg 360deg);
+      opacity: 0.9;
+    }
+
+    .tape-core {
+      position: relative;
+      z-index: 1;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #f4e1ca;
+      box-shadow: 0 0 0 2px rgba(64, 34, 19, 0.88);
+    }
+
+    .music-toggle.is-playing .reel-left {
+      animation: reelSpin 2.2s linear infinite;
+    }
+
+    .music-toggle.is-playing .reel-right {
+      animation: reelSpinReverse 2.2s linear infinite;
+    }
+
+    .tape-label {
+      text-align: center;
+      color: #f4dfc4;
+    }
+
+    .tape-label strong {
+      display: block;
+      font-size: 0.86rem;
+      letter-spacing: 0.18em;
+      margin-bottom: 0.14rem;
+    }
+
+    .tape-label small {
+      display: block;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 223, 183, 0.85);
+    }
+
+    .tape-controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.35rem;
+    }
+
+    .tape-control {
+      border-radius: 999px;
+      padding: 0.34rem 0.2rem;
+      background: rgba(52, 28, 16, 0.12);
+      box-shadow: inset 0 1px 0 rgba(255, 244, 229, 0.4);
+      color: rgba(67, 37, 20, 0.84);
+      font-size: 0.56rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .tape-control.play {
+      background: linear-gradient(180deg, #ffd08a, #e0a25d);
+      color: #4b2510;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 249, 239, 0.6),
+        0 8px 16px rgba(111, 78, 55, 0.16);
+    }
+
+    .music-toggle.is-playing .tape-control.play {
+      box-shadow:
+        inset 0 1px 0 rgba(255, 249, 239, 0.6),
+        0 0 16px rgba(255, 140, 176, 0.45);
+    }
+
+    @keyframes tapeLove {
+      0% {
+        opacity: 0;
+        transform: translateY(0.4rem) rotate(-45deg) scale(0.72);
+      }
+
+      25% {
+        opacity: 0.95;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-1rem) rotate(-45deg) scale(1.08);
+      }
+    }
+
+    @keyframes reelSpin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes reelSpinReverse {
+      from {
+        transform: rotate(360deg);
+      }
+
+      to {
+        transform: rotate(0deg);
+      }
+    }
+
+    @media (max-width: 991px) {
+      .product-card {
+        transform: none !important;
+      }
+
+      .product-visual {
+        width: 100%;
+        min-height: 220px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .footer-shell {
+        border-radius: 24px;
+      }
+
+      .footer-grid {
+        padding: 1.35rem;
+      }
+
+      .footer-bottom {
+        padding: 0 1.35rem 1.35rem;
+      }
+
+      .footer-social-link {
+        width: 48px;
+        height: 48px;
+      }
+
+      .footer-map-frame iframe {
+        min-height: 220px;
+      }
+
+      .music-toggle {
+        right: 0.8rem;
+        bottom: 0.8rem;
+        width: min(216px, calc(100vw - 0.9rem));
+        padding: 0.72rem;
+      }
+
+      .cassette-window {
+        grid-template-columns: 40px 1fr 40px;
+        gap: 0.45rem;
+        padding: 0.62rem;
+      }
+
+      .tape-reel {
+        width: 34px;
+        height: 34px;
+      }
+
+      .tape-label strong {
+        font-size: 0.74rem;
+      }
+
+      .tape-label small {
+        font-size: 0.54rem;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+    
+  <audio id="bgMusic" loop preload="auto">
+    <source src="bargad-tape.mp3" type="audio/mpeg">
+  </audio>
+
+  <nav class="navbar nav1" data-bs-theme="dark">
+    <div class="container-fluid">
+
+
+      <a class="navbar-brand d-flex align-items-center text-white" href="#home">
+        <svg class="logo-glow me-2" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#e6e6e6"
+          viewBox="0 0 16 16">
+          <path
+            d="M3.468 1.948C5.303 3.325 7.276 6.118 8 7.616c.725-1.498 2.698-4.29 4.532-5.668C13.855.955 16 .186 16 2.632c0 .489-.28 4.105-.444 4.692-.572 2.04-2.653 2.561-4.504 2.246 3.236.551 4.06 2.375 2.281 4.2-3.376 3.464-4.852-.87-5.23-1.98-.07-.204-.103-.3-.103-.218 0-.081-.033.014-.102.218-.379 1.11-1.855 5.444-5.231 1.98-1.778-1.825-.955-3.65 2.28-4.2-1.85.315-3.932-.205-4.503-2.246C.28 6.737 0 3.12 0 2.632 0 .186 2.145.955 3.468 1.948" />
+        </svg>
+        coffe Boot
+      </a>
+      <ul class="navbar-nav d-flex flex-row ms-auto ">
+        <li class="nav-item me-4">
+          <a class="nav-link active" href="#home">Home</a>
+        </li>
+        <li class="nav-item me-4">
+          <a class="nav-link" href="#price">Product</a>
+        </li>
+        <li class="nav-item me-3">
+          <a class="nav-link" href="#"></a>
+        </li>
+
+        <li class="nav-item me-3">
+          <button class="nav-link order-trigger" type="button" data-bs-toggle="offcanvas" data-bs-target="#orderPanel"
+            aria-controls="orderPanel" aria-label="Open order panel">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+              <path
+                d="M0 1.5A.5.5 0 0 1 .5 1h1a.5.5 0 0 1 .485.379L2.89 5H14.5a.5.5 0 0 1 .491.592l-1 5.5A.5.5 0 0 1 13.5 11H4a.5.5 0 0 1-.491-.408L1.61 2H.5a.5.5 0 0 1-.5-.5M4.415 10h8.668l.818-4.5H3.57zM5 12a1 1 0 1 0 0 2 1 1 0 0 0 0-2m7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2" />
+            </svg>
+            <span>Order</span>
+            <span class="order-count" id="orderCount">0</span>
+          </button>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link p-0" href="#" data-bs-toggle="dropdown">
+            <img src="https://github.com/mdo.png" width="32" height="32" class="rounded-circle">
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#" data-bs-toggle="offcanvas" data-bs-target="#orderPanel">Order</a></li>
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalSignin">Profile</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" style="color: red;" href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="offcanvas offcanvas-end order-panel" tabindex="-1" id="orderPanel" aria-labelledby="orderPanelLabel">
+    <div class="offcanvas-header">
+      <div>
+        <h5 class="offcanvas-title" id="orderPanelLabel">Coffee Order Panel</h5>
+        <small class="text-muted">Use this quick panel beside your profile to place an order.</small>
+      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="order-summary">
+        <div>
+          <small>Selected Items</small>
+          <h5 id="orderSummaryTitle">Your coffee tray</h5>
+        </div>
+        <div class="order-total" id="orderTotal">Rs 0</div>
+      </div>
+
+      <div class="order-products">
+        <article class="order-product">
+          <div class="order-product-icon">CC</div>
+          <div>
+            <h6>Cold Coffee Special</h6>
+            <p>Rs 199</p>
+          </div>
+          <button class="order-add-btn" type="button" data-product="Cold Coffee Special" data-price="199">Add</button>
+        </article>
+        <article class="order-product">
+          <div class="order-product-icon">HC</div>
+          <div>
+            <h6>Hot Cappuccino</h6>
+            <p>Rs 249</p>
+          </div>
+          <button class="order-add-btn" type="button" data-product="Hot Cappuccino" data-price="249">Add</button>
+        </article>
+        <article class="order-product">
+          <div class="order-product-icon">IL</div>
+          <div>
+            <h6>Iced Latte</h6>
+            <p>Rs 229</p>
+          </div>
+          <button class="order-add-btn" type="button" data-product="Iced Latte" data-price="229">Add</button>
+        </article>
+        <article class="order-product">
+          <div class="order-product-icon">CM</div>
+          <div>
+            <h6>Caramel Macchiato</h6>
+            <p>Rs 269</p>
+          </div>
+          <button class="order-add-btn" type="button" data-product="Caramel Macchiato" data-price="269">Add</button>
+        </article>
+        <article class="order-product">
+          <div class="order-product-icon">MD</div>
+          <div>
+            <h6>Mocha Delight</h6>
+            <p>Rs 279</p>
+          </div>
+          <button class="order-add-btn" type="button" data-product="Mocha Delight" data-price="279">Add</button>
+        </article>
+        <article class="order-product">
+          <div class="order-product-icon">ES</div>
+          <div>
+            <h6>Espresso Shot</h6>
+            <p>Rs 149</p>
+          </div>
+          <button class="order-add-btn" type="button" data-product="Espresso Shot" data-price="149">Add</button>
+        </article>
+      </div>
+
+      <div class="order-selected" id="orderSelectedText">No items added yet. Click `Order Now` or `Add` to build your
+        tray.</div>
+      <button class="w-100 place-order-btn" id="placeOrderBtn" type="button">Place Order</button>
+    </div>
+  </div>
+
+
+
+  <div class="modal fade" id="modalSignin" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header p-5 pb-4 border-bottom-0">
+          <h1 class="fw-bold mb-0 fs-2">Sign up for free</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-5 pt-0">
+          <form>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+              <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+              <label for="floatingPassword">Password</label>
+            </div>
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+            <hr class="my-4">
+            <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button">Sign up with
+              Google</button>
+            <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="button">Sign up with
+              Facebook</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="carouselExampleInterval" class="carousel slide carousel-fade hero-carousel" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active hero-slide" data-bs-interval="3000">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1400&q=80"
+          class="d-block w-100" alt="Fresh coffee being served in a cafe">
+        <div class="position-absolute hero-overlay"></div>
+        <div class="carousel-caption hero-caption">
+          <h2>Fresh Brew, Warm Vibes</h2>
+          <p>The carousel now rotates through coffee-themed images to create a cozy coffee shop mood.</p>
+        </div>
+      </div>
+      <div class="carousel-item hero-slide" data-bs-interval="3000">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1400&q=80"
+          class="d-block w-100" alt="Coffee cup on a wooden table in a coffee shop">
+        <div class="position-absolute hero-overlay"></div>
+        <div class="carousel-caption hero-caption">
+          <h2>Slow Sips, Soft Mornings</h2>
+          <p>These Bootstrap slides change automatically for a smooth browsing experience.</p>
+        </div>
+      </div>
+      <div class="carousel-item hero-slide" data-bs-interval="3000">
+        <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1400&q=80"
+          class="d-block w-100" alt="Barista working inside a stylish coffee shop">
+        <div class="position-absolute hero-overlay"></div>
+        <div class="carousel-caption hero-caption">
+          <h2>Barista Energy, Cafe Story</h2>
+          <p>Manual arrows are still available, so visitors can control the slider at any time.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <section class="container products-section">
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="product-card row g-0 flex-md-row position-relative h-100" tabindex="0" role="button"
+          aria-label="Cold Coffee Special product card">
+          <div class="col p-4 d-flex flex-column justify-content-center position-static product-content">
+            <strong class="product-badge text-danger">Coffee</strong>
+            <h3 class="mb-2 mt-3">Cold Coffee Special</h3>
+            <div class="mb-2 product-price">Rs 199</div>
+            <p class="card-text mb-auto">
+              Fresh cold coffee with chocolate flavor and creamy texture.
+            </p>
+            <a href="#" class="btn btn-sm btn-dark mt-3 product-link">Order Now</a>
+          </div>
+
+          <div class="col-md-4 product-visual">
+            <div class="product-steam" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80"
+              alt="Cold Coffee" width="200" height="250" class="product-image img-fluid h-100 object-fit-cover">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="product-card row g-0 flex-md-row position-relative h-100" tabindex="0" role="button"
+          aria-label="Hot Cappuccino product card">
+          <div class="col p-4 d-flex flex-column justify-content-center position-static product-content">
+            <strong class="product-badge text-success">Coffee</strong>
+            <h3 class="mb-2 mt-3">Hot Cappuccino</h3>
+            <div class="mb-2 product-price">Rs 249</div>
+            <p class="card-text mb-auto">
+              Rich espresso with creamy milk foam and a smooth warm taste.
+            </p>
+            <a href="#" class="btn btn-sm btn-dark mt-3 product-link">Order Now</a>
+          </div>
+
+          <div class="col-md-4 product-visual">
+            <div class="product-steam" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&q=80"
+              alt="Hot Cappuccino" width="200" height="250" class="product-image img-fluid h-100 object-fit-cover">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6" id="price">
+        <div class="product-card row g-0 flex-md-row position-relative h-100" tabindex="0" role="button"
+          aria-label="Iced Latte product card">
+          <div class="col p-4 d-flex flex-column justify-content-center position-static product-content">
+            <strong class="product-badge text-primary">Coffee</strong>
+            <h3 class="mb-2 mt-3">Iced Latte</h3>
+            <div class="mb-2 product-price">Rs 229</div>
+            <p class="card-text mb-auto">
+              Chilled espresso with silky milk, light ice, and a smooth cafe-style finish for everyday refreshment.
+            </p>
+            <a href="#" class="btn btn-sm btn-dark mt-3 product-link">Order Now</a>
+          </div>
+
+          <div class="col-md-4 product-visual">
+            <div class="product-steam" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=400&q=80"
+              alt="Iced Latte" width="200" height="250" class="product-image img-fluid h-100 object-fit-cover">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="product-card row g-0 flex-md-row position-relative h-100" tabindex="0" role="button"
+          aria-label="Caramel Macchiato product card">
+          <div class="col p-4 d-flex flex-column justify-content-center position-static product-content">
+            <strong class="product-badge text-warning">Coffee</strong>
+            <h3 class="mb-2 mt-3">Caramel Macchiato</h3>
+            <div class="mb-2 product-price">Rs 269</div>
+            <p class="card-text mb-auto">
+              Sweet caramel drizzle, creamy milk foam, and bold espresso layers in one rich signature cup.
+            </p>
+            <a href="#" class="btn btn-sm btn-dark mt-3 product-link">Order Now</a>
+          </div>
+
+          <div class="col-md-4 product-visual">
+            <div class="product-steam" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=400&q=80"
+              alt="Caramel Macchiato" width="200" height="250" class="product-image img-fluid h-100 object-fit-cover">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="product-card row g-0 flex-md-row position-relative h-100" tabindex="0" role="button"
+          aria-label="Mocha Delight product card">
+          <div class="col p-4 d-flex flex-column justify-content-center position-static product-content">
+            <strong class="product-badge text-danger">Coffee</strong>
+            <h3 class="mb-2 mt-3">Mocha Delight</h3>
+            <div class="mb-2 product-price">Rs 279</div>
+            <p class="card-text mb-auto">
+              Espresso, dark chocolate, and creamy milk blend together for a dessert-like mocha experience.
+            </p>
+            <a href="#" class="btn btn-sm btn-dark mt-3 product-link">Order Now</a>
+          </div>
+
+          <div class="col-md-4 product-visual">
+            <div class="product-steam" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=400&q=80"
+              alt="Mocha Delight" width="200" height="250" class="product-image img-fluid h-100 object-fit-cover">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="product-card row g-0 flex-md-row position-relative h-100" tabindex="0" role="button"
+          aria-label="Espresso Shot product card">
+          <div class="col p-4 d-flex flex-column justify-content-center position-static product-content">
+            <strong class="product-badge text-dark">Coffee</strong>
+            <h3 class="mb-2 mt-3">Espresso Shot</h3>
+            <div class="mb-2 product-price">Rs 149</div>
+            <p class="card-text mb-auto">
+              Strong, aromatic, and compact espresso made for quick energy with a clean bold finish.
+            </p>
+            <a href="#" class="btn btn-sm btn-dark mt-3 product-link">Order Now</a>
+          </div>
+
+          <div class="col-md-4 product-visual">
+            <div class="product-steam" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=400&q=80"
+              alt="Espresso Shot" width="200" height="250" class="product-image img-fluid h-100 object-fit-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container offer-section">
+    <div class="offer-banner">
+      <div class="offer-topline">
+        <small>Today's Special</small>
+        <span class="offer-glow">Limited Time</span>
+      </div>
+      <h2>Fresh deals brewed for coffee lovers.</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <article class="offer-card">
+          <span class="offer-chip">Special 01</span>
+          <h3>Buy 1 Get 1 Cold Coffee</h3>
+          <p>Do chilled coffees ek saath, perfect for sharing with a friend.</p>
+          <div class="offer-price">2 Cups in Rs 199</div>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="offer-card">
+          <span class="offer-chip">Special 02</span>
+          <h3>Cappuccino + Brownie Combo</h3>
+          <p>A warm cappuccino paired with a soft brownie for a cozy cafe combo in one order.</p>
+          <div class="offer-price">Combo at Rs 299</div>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="offer-card">
+          <span class="offer-chip">Special 03</span>
+          <h3>Flat 20% Off on Evening Orders</h3>
+          <p>Save more on evening orders and make your coffee break even better.</p>
+          <div class="offer-price">Valid 6 PM - 9 PM</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="container reviews-section">
+    <div class="offer-banner">
+      <div class="offer-topline">
+        <small>Customer Reviews</small>
+        <span class="offer-glow">Loved By Guests</span>
+      </div>
+      <h2>What coffee lovers say about Coffee Boot.</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 review-column">
+        <article class="review-card">
+          <svg aria-label="Rahul review" class="review-avatar rounded-circle" height="140"
+            preserveAspectRatio="xMidYMid slice" role="img" width="140" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 140 140">
+            <title>Rahul</title>
+            <rect width="100%" height="100%" fill="#6f4e37"></rect>
+            <text x="50%" y="54%" text-anchor="middle" fill="#fff7ef" font-size="46"
+              font-family="Georgia, serif">R</text>
+          </svg>
+          <h2 class="fw-normal">Rahul</h2>
+          <p>The cold coffee tasted great, the presentation looked polished, and the overall vibe felt cafe-quality.
+            Perfect for a weekend hangout.</p>
+          <p><a class="btn btn-secondary review-btn" href="#">Read Review</a></p>
+        </article>
+      </div>
+      <div class="col-lg-4 review-column">
+        <article class="review-card">
+          <svg aria-label="Simran review" class="review-avatar rounded-circle" height="140"
+            preserveAspectRatio="xMidYMid slice" role="img" width="140" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 140 140">
+            <title>Simran</title>
+            <rect width="100%" height="100%" fill="#8a5a36"></rect>
+            <text x="50%" y="54%" text-anchor="middle" fill="#fff7ef" font-size="46"
+              font-family="Georgia, serif">S</text>
+          </svg>
+          <h2 class="fw-normal">Simran</h2>
+          <p>The cappuccino and brownie combo completely set the mood. The cozy interior feel and warm colors look
+            very premium.</p>
+          <p><a class="btn btn-secondary review-btn" href="#">Read Review</a></p>
+        </article>
+      </div>
+      <div class="col-lg-4 review-column">
+        <article class="review-card">
+          <svg aria-label="Aman review" class="review-avatar rounded-circle" height="140"
+            preserveAspectRatio="xMidYMid slice" role="img" width="140" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 140 140">
+            <title>Aman</title>
+            <rect width="100%" height="100%" fill="#5a3822"></rect>
+            <text x="50%" y="54%" text-anchor="middle" fill="#fff7ef" font-size="46"
+              font-family="Georgia, serif">A</text>
+          </svg>
+          <h2 class="fw-normal">Aman</h2>
+          <p>The evening offer and Bargad music make the page feel memorable. The espresso shot was bold and
+            satisfying.</p>
+          <p><a class="btn btn-secondary review-btn" href="#">Read Review</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-section">
+    <div class="footer-shell">
+      <div class="footer-grid">
+        <div class="footer-panel">
+          <span class="footer-kicker">Coffee Boot</span>
+          <h2 class="footer-brand">Fresh coffee, warm vibes, Seattle style.</h2>
+          <p class="footer-copy">This footer brings together the brand, social links, and a USA coffee shop map to give
+            the page a polished ending.</p>
+          <div class="footer-meta">
+            <div class="footer-meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path
+                  d="M3.654 1.328a.678.678 0 0 1 .737-.065l2.522 1.26c.293.147.445.47.37.79l-.37 1.59a.68.68 0 0 1-.59.52l-1.285.162a11.7 11.7 0 0 0 5.59 5.59l.162-1.285a.68.68 0 0 1 .52-.59l1.59-.37a.68.68 0 0 1 .79.37l1.26 2.522a.68.68 0 0 1-.065.737l-1.123 1.404a1.75 1.75 0 0 1-1.78.59c-2.387-.638-4.918-2.182-6.962-4.226C2.668 8.498 1.124 5.967.486 3.58a1.75 1.75 0 0 1 .59-1.78z" />
+              </svg>
+              <span>+1 (206) 555-0199</span>
+            </div>
+            <div class="footer-meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v.217L8 8.583.002 4.217z" />
+                <path
+                  d="M0 4.697v7.104l5.803-3.558zM6.761 7.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.809-1.143l-6.57-4.027L8 9.583zM10.197 8.243 16 11.801V4.697z" />
+              </svg>
+              <span>hello@coffeeboot.com</span>
+            </div>
+            <div class="footer-meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path
+                  d="M8 16s6-5.686 6-10A6 6 0 1 0 2 6c0 4.314 6 10 6 10m0-7.5A2.5 2.5 0 1 1 8 3a2.5 2.5 0 0 1 0 5" />
+              </svg>
+              <span>Seattle Coffee Stop, Washington, USA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-panel">
+          <h3 class="footer-social-title">Follow The Brew</h3>
+          <p class="footer-social-copy">Social media page </p>
+          <div class="footer-socials">
+            <a class="footer-social-link" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"
+              aria-label="Visit Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path
+                  d="M16 8.049C16 3.603 12.418 0 8 0S0 3.603 0 8.049C0 12.066 2.925 15.396 6.75 16v-5.625H4.719V8.049H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.79.157 1.79.157v1.98H10.57c-.994 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.267V16C13.075 15.396 16 12.066 16 8.049" />
+              </svg>
+            </a>
+            <a class="footer-social-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"
+              aria-label="Visit Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path
+                  d="M8 0C5.829 0 5.556.01 4.703.048 3.85.087 3.269.222 2.76.42a5.3 5.3 0 0 0-1.917 1.248A5.3 5.3 0 0 0 .42 3.585c-.198.51-.333 1.09-.372 1.944C.01 6.382 0 6.655 0 8.826c0 2.172.01 2.445.048 3.298.039.854.174 1.434.372 1.944a5.3 5.3 0 0 0 1.248 1.917 5.3 5.3 0 0 0 1.917 1.248c.51.198 1.09.333 1.944.372C5.382 15.99 5.655 16 7.826 16c2.172 0 2.445-.01 3.298-.048.854-.039 1.434-.174 1.944-.372a5.5 5.5 0 0 0 3.165-3.165c.198-.51.333-1.09.372-1.944.038-.853.048-1.126.048-3.298 0-2.171-.01-2.444-.048-3.297-.039-.854-.174-1.434-.372-1.944a5.5 5.5 0 0 0-3.165-3.165c-.51-.198-1.09-.333-1.944-.372C10.271.01 9.998 0 7.826 0zm0 1.441c2.134 0 2.387.008 3.233.047.782.036 1.206.166 1.488.276.374.145.64.319.92.6.28.279.454.545.6.919.11.282.24.706.276 1.489.039.845.047 1.098.047 3.232s-.008 2.387-.047 3.233c-.036.782-.166 1.206-.276 1.488a4 4 0 0 1-.6.92 4 4 0 0 1-.92.6c-.282.11-.706.24-1.488.276-.846.039-1.099.047-3.233.047s-2.387-.008-3.232-.047c-.783-.036-1.207-.166-1.489-.276a4 4 0 0 1-.919-.6 4 4 0 0 1-.6-.92c-.11-.282-.24-.706-.276-1.488-.039-.846-.047-1.099-.047-3.233s.008-2.387.047-3.232c.036-.783.166-1.207.276-1.489.145-.374.319-.64.6-.919.279-.281.545-.455.919-.6.282-.11.706-.24 1.489-.276.845-.039 1.098-.047 3.232-.047" />
+                <path
+                  d="M8 3.892A4.108 4.108 0 1 0 8 12.108 4.108 4.108 0 0 0 8 3.892m0 6.775A2.667 2.667 0 1 1 8 5.333a2.667 2.667 0 0 1 0 5.334m4.271-6.938a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92" />
+              </svg>
+            </a>
+          </div>
+          <p class="footer-note"></p>
+        </div>
+
+        <div class="footer-panel">
+          <h3 class="footer-map-title">Find Us In Seattle, USA</h3>
+          <p class="footer-map-copy">The map is centered on the Seattle area to give the page a USA coffee shop feel.
+            It will load when internet access is available.</p>
+          <div class="footer-map-frame">
+            <iframe title="Seattle coffee shop map" loading="lazy"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-122.3493%2C47.6077%2C-122.3321%2C47.6187&amp;layer=mapnik&amp;marker=47.6132%2C-122.3407"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Coffee Boot. Brewed daily for coffee lovers.</span>
+        <a href="#">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" class="music-toggle" id="musicToggle" aria-label="Play or pause background music">
+    <span class="tape-love" aria-hidden="true">
+      <span class="love-heart heart-1"></span>
+      <span class="love-heart heart-2"></span>
+      <span class="love-heart heart-3"></span>
+    </span>
+    <span class="tape-header">
+      <span class="tape-brand">BARGAD TAPE</span>
+      <span class="tape-status" id="musicStatus">STANDBY</span>
+    </span>
+    <span class="cassette-window">
+      <span class="tape-reel reel-left" aria-hidden="true">
+        <span class="tape-core"></span>
+      </span>
+      <span class="tape-label">
+        <strong>BARGAD</strong>
+        <small id="musicToggleText">Tap To Play</small>
+      </span>
+      <span class="tape-reel reel-right" aria-hidden="true">
+        <span class="tape-core"></span>
+      </span>
+    </span>
+    <span class="tape-controls" aria-hidden="true">
+      <span class="tape-control">Rec</span>
+      <span class="tape-control play">Play</span>
+      <span class="tape-control">Stop</span>
+    </span>
+  </button>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <script>
+    const productCards = document.querySelectorAll(".product-card");
+    const productLinks = document.querySelectorAll(".product-link");
+    const bgMusic = document.getElementById("bgMusic");
+    const musicToggle = document.getElementById("musicToggle");
+    const musicToggleText = document.getElementById("musicToggleText");
+    const musicStatus = document.getElementById("musicStatus");
+    const orderPanel = document.getElementById("orderPanel");
+    const orderCount = document.getElementById("orderCount");
+    const orderTotal = document.getElementById("orderTotal");
+    const orderSelectedText = document.getElementById("orderSelectedText");
+    const placeOrderBtn = document.getElementById("placeOrderBtn");
+    const orderSummaryTitle = document.getElementById("orderSummaryTitle");
+    const orderAddButtons = document.querySelectorAll(".order-add-btn");
+
+    let orderItems = [];
+    let orderTotalValue = 0;
+    const orderOffcanvas = orderPanel ? bootstrap.Offcanvas.getOrCreateInstance(orderPanel) : null;
+
+    productCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        productCards.forEach((item) => {
+          if (item !== card) {
+            item.classList.remove("is-active");
+          }
+        });
+
+        card.classList.toggle("is-active");
+      });
+
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          card.click();
+        }
+      });
+    });
+
+    const updateOrderPanel = () => {
+      if (orderCount) {
+        orderCount.textContent = String(orderItems.length);
+      }
+
+      if (orderTotal) {
+        orderTotal.textContent = `Rs ${orderTotalValue}`;
+      }
+
+      if (orderSummaryTitle) {
+        orderSummaryTitle.textContent = orderItems.length ? `${orderItems.length} item${orderItems.length > 1 ? "s" : ""} ready to place` : "Your coffee tray";
+      }
+
+      if (orderSelectedText) {
+        orderSelectedText.textContent = orderItems.length
+          ? `Selected: ${orderItems.map((item) => item.name).join(", ")}`
+          : "No items added yet. Click `Order Now` or `Add` to build your tray.";
+      }
+    };
+
+    const addOrderItem = (name, price) => {
+      const numericPrice = Number.parseInt(String(price).replace(/[^\d]/g, ""), 10) || 0;
+      orderItems.push({ name, price: numericPrice });
+      orderTotalValue += numericPrice;
+      updateOrderPanel();
+    };
+
+    orderAddButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        addOrderItem(button.dataset.product || "Coffee", button.dataset.price || "0");
+      });
+    });
+
+    productLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const card = link.closest(".product-card");
+        const productName = card?.querySelector("h3")?.textContent?.trim() || "Coffee";
+        const productPrice = card?.querySelector(".product-price")?.textContent?.trim() || "Rs 0";
+
+        addOrderItem(productName, productPrice);
+        orderOffcanvas?.show();
+      });
+    });
+
+    placeOrderBtn?.addEventListener("click", () => {
+      if (!orderItems.length) {
+        if (orderSelectedText) {
+          orderSelectedText.textContent = "Add a coffee first, then place your order.";
+        }
+        return;
+      }
+
+      const orderedNames = orderItems.map((item) => item.name).join(", ");
+      if (orderSelectedText) {
+        orderSelectedText.textContent = `Order placed: ${orderedNames}. Your fresh brew is on the way.`;
+      }
+      placeOrderBtn.textContent = "Order Placed";
+
+      window.setTimeout(() => {
+        orderItems = [];
+        orderTotalValue = 0;
+        updateOrderPanel();
+        placeOrderBtn.textContent = "Place Order";
+        orderOffcanvas?.hide();
+      }, 1600);
+    });
+
+    updateOrderPanel();
+
+    const setMusicState = (isPlaying, label, statusText) => {
+      if (!musicToggle || !musicToggleText) {
+        return;
+      }
+
+      musicToggle.classList.toggle("is-playing", isPlaying);
+      musicToggleText.textContent = label;
+      musicToggle.setAttribute("aria-pressed", isPlaying ? "true" : "false");
+
+      if (musicStatus) {
+        musicStatus.textContent = statusText;
+      }
+    };
+
+    const playMusic = async () => {
+      if (!bgMusic) {
+        return;
+      }
+
+      try {
+        await bgMusic.play();
+        setMusicState(true, "Now Spinning", "PLAYING");
+      } catch (error) {
+        setMusicState(false, "Tap To Play", "STANDBY");
+      }
+    };
+
+    if (bgMusic && musicToggle) {
+      setMusicState(false, "Tap To Play", "STANDBY");
+
+      window.addEventListener("load", () => {
+        playMusic();
+      });
+
+      document.addEventListener("click", () => {
+        if (bgMusic.paused) {
+          playMusic();
+        }
+      }, { once: true });
+
+      musicToggle.addEventListener("click", async () => {
+        if (bgMusic.paused) {
+          await playMusic();
+        } else {
+          bgMusic.pause();
+          setMusicState(false, "Tap To Play", "STANDBY");
+        }
+      });
+
+      bgMusic.addEventListener("play", () => {
+        setMusicState(true, "Now Spinning", "PLAYING");
+      });
+
+      bgMusic.addEventListener("pause", () => {
+        setMusicState(false, "Tap To Play", "STANDBY");
+      });
+
+      bgMusic.addEventListener("error", () => {
+        musicToggle.disabled = true;
+        setMusicState(false, "Song Missing", "OFFLINE");
+      });
+    }
+  </script>
+</body>
+
+</html>
